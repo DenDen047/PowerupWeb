@@ -1,0 +1,18 @@
+{
+    "name": "Powerup Website",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "power up each websit.",
+
+    "permissions": [
+        "http://*/*"
+    ],
+
+    "content_scripts": [
+        {
+            "matches": ["http://dropbooks.tv/*"],
+            "js": ["scripts/dropbooks.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
