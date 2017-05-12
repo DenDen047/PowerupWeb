@@ -8,11 +8,14 @@
         "http://*/*"
     ],
 
-    "content_scripts": [
-        {
-            "matches": ["http://dropbooks.tv/*"],
-            "js": ["scripts/dropbooks.js"],
-            "run_at": "document_end"
-        }
-    ]
+    "content_scripts": [{
+        "matches": ["http://dropbooks.tv/*"],
+        "js": ["scripts/dropbooks.js"],
+        "run_at": "document_end"
+    },
+    {
+        "matches": ["http://*/*.jpg"],
+        "js": ["scripts/download_img.js"],
+        "run_at": "document_end"
+    }]
 }

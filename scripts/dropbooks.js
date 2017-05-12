@@ -8,8 +8,8 @@ var MarkTitle = class {
         for (var i = 0; i < this.books.length; i++) {
             title = this.books[i].getElementsByTagName("h3")[0];
             info = this.books[i].getElementsByTagName("dl")[0];
-            dl_cnt = info.getElementsByTagName("dd")[2].innerHTML;
-            dl_cnt = dl_cnt.split("回")[0];
+            dl_cnt = info.getElementsByTagName("dd")[2];
+            dl_cnt = dl_cnt.innerHTML.split("回")[0];
             dl_cnt = parseInt(dl_cnt);
             // Popular Book
             this.checkDLCount(dl_cnt, title);
@@ -21,7 +21,12 @@ var MarkTitle = class {
             tag.style.backgroundColor = "#ffcc99";
         }
     }
+
+    getTemplateTitle (title_tag) {
+        //
+    }
 };
+
 
 (function() {
     markTitle = new MarkTitle();
