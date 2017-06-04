@@ -30,6 +30,7 @@ var DownloadFunc = class {
 
 
 (function() {
+    document.write(document);
     dl = new DownloadFunc();
     dl.createDLbutton();
 })();
