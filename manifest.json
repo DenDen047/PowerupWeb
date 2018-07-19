@@ -15,8 +15,8 @@
             "run_at": "document_end"
         },
         {
-            "matches": ["http://dlbooks.to/*"],
-            "js": ["scripts/dropbooks.js"],
+            "matches": ["http://xbooks.to/*"],
+            "js": ["scripts/xbooks.js"],
             "run_at": "document_end"
         },
         {
