@@ -8,14 +8,46 @@
         "http://*/*"
     ],
 
-    "content_scripts": [{
-        "matches": ["http://dropbooks.tv/*"],
-        "js": ["scripts/dropbooks.js"],
-        "run_at": "document_end"
-    },
-    {
-        "matches": ["http://*/*.jpg", "http://*/*.png", "http://*/*.gif"],
-        "js": ["scripts/download_img.js"],
-        "run_at": "document_end"
-    }]
+    "content_scripts": [
+        {
+            "matches": ["http://*/*"],
+            "js": ["scripts/crowd4u.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["http://dlbooks.to/*"],
+            "js": ["scripts/dropbooks.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["http://hentaihaven.org//*"],
+            "js": ["scripts/hentaihaven.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": ["http://blog.livedoor.jp/wakusoku/*"],
+            "js": ["scripts/wakusoku.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": ["http://sugumiru18.com/*"],
+            "js": ["scripts/sugumiru18.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": ["http://*.fc2.com/*"],
+            "js": ["scripts/fc2.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": ["http://hime-book.net/*"],
+            "js": ["scripts/hime-book.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": ["http://*/*.jpg", "http://*/*.png", "http://*/*.gif"],
+            "js": ["scripts/download_img.js"],
+            "run_at": "document_end"
+        }
+    ]
 }
