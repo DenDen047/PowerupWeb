@@ -10,9 +10,21 @@
         /*--- Preview Page ---*/
         // round ad
         ad_div.push(document.getElementsByClassName("movie-in-ad")[0]);
-        ad_div.push(document.getElementsByClassName("adbox left")[0]);
-        ad_div.push(document.getElementsByClassName("adbox right")[0]);
+        ad_div = ad_div.concat(to_array(document.getElementsByClassName("adbox left")));
+        ad_div = ad_div.concat(to_array(document.getElementsByClassName("adbox right")));
+
+        // banner bottom-right
         ad_div.push(document.getElementById('ad_tsuibi'));
+        ad_div.push(document.getElementById('ad_tsuibi2'));
+
+        // top ad
+        ad_div.push(document.getElementById('wrap').getElementsByTagName("div")[0]);
+        ad_div = ad_div.concat(to_array(
+            document.getElementById('wrap').getElementsByTagName('iframe')));
+
+        // in outline
+        // ad_div = ad_div.concat(to_array(
+        //     document.getElementById('main2col').getElementsByTagName('center')));
     }
     else {
         /*--- Search Page ---*/
