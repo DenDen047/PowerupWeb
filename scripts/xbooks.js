@@ -22,6 +22,9 @@
         ad_div = ad_div.concat(to_array(
             document.getElementById('wrap').getElementsByTagName('iframe')));
 
+        // first blank window
+        ad_div.push(document.getElementsByClassName('ad_img_box_e')[0]);
+
         // in outline
         // ad_div = ad_div.concat(to_array(
         //     document.getElementById('main2col').getElementsByTagName('center')));
