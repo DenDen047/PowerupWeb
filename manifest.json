@@ -10,6 +10,11 @@
 
     "content_scripts": [
         {
+            "matches": ["https://www.instagram.com/*"],
+            "js": ["scripts/instagram.js"],
+            "run_at": "document_end"
+        },
+        {
             "matches": ["http://*/*"],
             "js": ["scripts/crowd4u.js"],
             "run_at": "document_end"
@@ -47,11 +52,6 @@
         {
             "matches": ["http://*/*.jpg", "http://*/*.png", "http://*/*.gif"],
             "js": ["scripts/download_img.js"],
-            "run_at": "document_end"
-        },
-        {
-            "matches": ["https://www.instagram.com/*"],
-            "js": ["scripts/instagram.js"],
             "run_at": "document_end"
         }
     ]
