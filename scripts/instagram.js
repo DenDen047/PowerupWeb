@@ -7,8 +7,7 @@ var DownloadFunc = class {
     }
 
     getMediaTags () {
-        var tags = document.getElementsByTagName('img');
-        return tags;
+        return document.getElementsByTagName('img');
     }
 
     createDLlink () {
@@ -30,20 +29,15 @@ var DownloadFunc = class {
     createDLbutton () {
         // 全てのメディア（動画，画像）のタグを洗い出す
         var tags = this.getMediaTags();
-        console.log('hoge');
-        for (var i = 0; i < tags.length; i++) {
-            var tag = tags[i];
-            console.log(tag);
-            // それぞれのメディアのリンクをgetする
-            // 各メディアにそれらのダウンロードリンクを貼る
-
-        }
+        console.log(tags);
+        console.log(tags.length);
     }
 };
 
 
-(function() {
+window.onload = function() {
     // document.write(document);
     dl = new DownloadFunc();
     dl.createDLbutton();
-})();
+
+}

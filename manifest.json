@@ -12,7 +12,7 @@
         {
             "matches": ["https://www.instagram.com/*"],
             "js": ["scripts/instagram.js"],
-            "run_at": "document_end"
+            "run_at": "document_idle"
         },
         {
             "matches": ["http://*/*"],
