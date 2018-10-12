@@ -23,6 +23,7 @@ var DownloadFunc = class {
         var option_div = article.querySelector('div:nth-child(3)');
         // mediaのタグを抽出
         var media = media_div.querySelector('div > div > div:nth-child(1) > img')
+
     }
 
     createDLlink () {
