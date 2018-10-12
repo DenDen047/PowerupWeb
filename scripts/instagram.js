@@ -7,7 +7,20 @@ var DownloadFunc = class {
     }
 
     getMediaTags () {
-        return document.getElementsByTagName('img');
+        // article要素だけを取り出す
+        var div = document.querySelector(
+            '#react-root > section > main > section > div > div:nth-child(1) > div');
+        var articles = div.getElementsByTagName('article');
+        // header要素にアイコンのimgがあり，邪魔なので削除
+        var imgs = [];
+        for (var i = 0; i < articles.length; i++) {
+            var article = articles[i];
+            var img = Array.prototype.slice.call(article.getElementsByTagName('img'));
+            img.shift();
+            imgs = imgs.concat(img);
+        }
+
+        return imgs;
     }
 
     createDLlink () {
