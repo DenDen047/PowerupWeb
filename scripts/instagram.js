@@ -6,46 +6,70 @@ var DownloadFunc = class {
         catch(e){}
     }
 
-    getMediaTags () {
+    getArticleTags () {
         // article要素だけを取り出す
         var div = document.querySelector(
             '#react-root > section > main > section > div > div:nth-child(1) > div');
         var articles = div.getElementsByTagName('article');
-        // header要素にアイコンのimgがあり，邪魔なので削除
-        var imgs = [];
-        for (var i = 0; i < articles.length; i++) {
-            var article = articles[i];
-            var img = Array.prototype.slice.call(article.getElementsByTagName('img'));
-            img.shift();
-            imgs = imgs.concat(img);
-        }
 
-        return imgs;
+        return articles;
+    }
+
+    getMediaTags (article) {    // articleからメディア(画像/動画)のタグを取り出す
+        // 必要な変数を用意する
+        var header = article.querySelector('header');
+        var media_div = article.querySelector('div:nth-child(1)');
+        var explain_div = article.querySelector('div:nth-child(2)');
+        var option_div = article.querySelector('div:nth-child(3)');
+        // mediaのタグを抽出
+        var media = media_div.querySelector('div > div > div:nth-child(1) > img')
     }
 
     createDLlink () {
-        var url = window.location.href;
+        // 全てのarticleタグを取り出す
+        var article = this.getArticleTags();
+        // それぞれのarticleに対して処理を行う
+        for (var i = 0; i < articles.length; i++) {
+            // 必要な変数を取り出す
+            var article = articles[i];
+            var url = img.getAttribute('src');
 
-        var aNode = document.createElement('a');
-        aNode.href = url;
-        var urlArray = url.split('/');
-        aNode.download = urlArray[urlArray.length - 1];
+            // parentをwrapperで，ラップすることで，画像にリンクを付与
+            var parent = img.parentNode;
+            var wrapper = document.createElement('a');
+            console.log(url);
+            wrapper.setAttribute('href', url);
+            url = url.split('/');
+            wrapper.setAttribute('download', url[url.length - 1]);
 
-        var imgNode = document.createElement('img');
-        imgNode.src = url;
-
-        aNode.appendChild(imgNode);
-
-        return aNode;
+            // set the wrapper as child (instead of the element)
+            parent.replaceChild(wrapper, img);
+            // set element as child of wrapper
+            wrapper.appendChild(img);
+        }
     }
 
     createDLbutton () {
-        // 全てのメディア（動画，画像）のタグを洗い出す
-        var tags = this.getMediaTags();
-        console.log(tags);
-        console.log(tags.length);
     }
 };
+
+
+function download_files(urls) {
+    var link = document.createElement('a');
+
+    link.setAttribute('download', null);
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+
+    for (var i = 0; i < urls.length; i++) {
+        link.setAttribute('href', urls[i]);
+        link.click();
+    }
+
+    document.body.removeChild(link);
+}
+
 
 function dom_observe () {
     const CLASS_NEW_TWEETS_BAR = "new-tweets-bar";
@@ -57,11 +81,8 @@ function dom_observe () {
     //オブザーバーの作成
     const observer = new MutationObserver(records => {
         console.log('load!!');
-        // records.forEach(record => {
-        //     Array.from(record.addedNodes)
-        //         .filter(node => node.classList.contains(CLASS_NEW_TWEETS_BAR))
-        //         .forEach(node => node.click());
-        // });
+        // var dl = new DownloadFunc();
+        // dl.createDLlink();
     });
 
     //監視オプションの作成
@@ -79,7 +100,7 @@ window.onload = function() {
 
     // 画像のダウンロードボタンを生成する
     var dl = new DownloadFunc();
-    dl.createDLbutton();
+    dl.createDLlink();
 
     // DOMの変更を監視して必要に応じて，更新する
     dom_observe();
