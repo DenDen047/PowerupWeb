@@ -32,6 +32,10 @@
         // first blank window
         ad_div.push(document.getElementsByClassName('ad_img_box_e')[0]);
 
+        // previewの上下に出る広告
+        ad_div.push(document.querySelector('#one_col > center'));
+        ad_div.push(document.querySelector('#bookpreview > center'));
+
         // scripts
         ad_div.push(document.querySelector('#bookpreview > script'));
         ad_div.push(document.querySelector('#one_col > script'));
