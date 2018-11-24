@@ -74,6 +74,8 @@
         ad_div.push(document.querySelector('body > script:nth-child(6)'));
         ad_div.push(document.querySelector('body > script:nth-child(7)'));
 
+        // sidebars
+        ad_div.push(document.querySelector('#sidebar > div:nth-child(6) '));
     }
 
     // remove all
