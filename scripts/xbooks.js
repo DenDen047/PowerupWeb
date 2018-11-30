@@ -25,7 +25,9 @@
         ad_div.push(document.getElementById('ad_tsuibi2'));
 
         // top ad
-        ad_div.push(document.getElementById('wrap').getElementsByTagName("div")[0]);
+        ad_div.push(document.querySelector('#wrap > div:nth-child(1)'));
+        ad_div.push(document.querySelector('#wrap > div:nth-child(2) > div.content_line.markerbox'));
+        ad_div.push(document.querySelector('#wrap > div:nth-child(2) > h2'));
         ad_div = ad_div.concat(to_array(
             document.getElementById('wrap').getElementsByTagName('iframe')));
 
