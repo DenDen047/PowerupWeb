@@ -11,37 +11,35 @@ var DownloadButtons = class {
             'cuc_container images__content flex row wrap justify-center relative');
     }
 
-    createDLLink (a_tag) {
-        var aNode = document.createElement('a');
-        var href = a_tag.href;
-        console.log(href);
-        var urlArray = href.split('/');
-        aNode.setAttribute('href', href);
-        aNode.setAttribute('download', urlArray[urlArray.length - 1]);
-
-        var imgNode = document.createElement('img');
-        var icon = chrome.runtime.getURL('icons/icon128.png');
-        imgNode.setAttribute('src', icon);
-        imgNode.setAttribute('width', 22);
-
-        aNode.appendChild(imgNode);
-
-        return aNode;
+    del_element (element) {
+        // try {
+            element.parentNode.removeChild(element);
+        // }
+        // catch(e){}
     }
 
     createDLButton () {
-        var div_images = this.getTargetDiv();
-        var as = div_images[0].getElementsByTagName('a');
+        var div_tag = this.getTargetDiv()[0];
+        var as = div_tag.getElementsByTagName('a');
         console.log(as.length);
 
         // add DL buttons to each img element
         for (var i=0, i_max=as.length; i < i_max; i++) {
-            // get the credit tag
-            var div_credit = as[i].getElementsByClassName('credits')[0];
+            var a_tag = as[i];
 
-            // add new element to each image
-            var dl_link = this.createDLLink(as[i]);
-            div_credit.appendChild(dl_link);
+            const url = URL.createObjectURL(blob);
+            const args = {url: url};
+            const callback = function() {};
+            chrome.downloads.download(args, callback);
+            URL.revokeObjectURL(url);
+
+            // over-rapping another one to the a_tag
+            var aNode = document.createElement('a');
+            var url = a_tag.href;
+            aNode.href = url;
+            var urlArray = url.split('/');
+            aNode.download = urlArray[urlArray.length - 1];
+            aNode.target = '_blank';
 
             console.log(i);
         }
@@ -83,7 +81,6 @@ var DownloadButtons = class {
         }
     }
 };
-
 
 (function() {
     var dl = new DownloadButtons();
