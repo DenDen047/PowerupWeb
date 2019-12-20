@@ -5,7 +5,7 @@
     "description": "power up each websit.",
 
     "permissions": [
-        "http://*/*"
+        "activeTab"
     ],
 
     "content_scripts": [
@@ -45,6 +45,11 @@
                 "http://*/*.jpg", "http://*/*.jpeg", "http://*/*.png", "http://*/*.gif"],
             "js": ["scripts/download_img.js"],
             "run_at": "document_end"
+        },
+        {
+            "matches": ["https://hanime.tv/browse/images*"],
+            "js": ["scripts/hanime_tv.js"],
+            "run_at": "document_idle"
         }
     ]
 }
