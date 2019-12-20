@@ -87,14 +87,11 @@ var DownloadButtons = class {
 
 (function() {
     var dl = new DownloadButtons();
-    var runed = false;
 
-    function run () {
-        var ready = dl.stateCheck();
-        if (ready && !runed) {
-            runed = true;
-            console.log('go');
-            // dl.createDLButton();
+    var run = function run_func () {
+        if (dl.stateCheck()) {
+            document.removeEventListener("DOMSubtreeModified", run);
+            dl.createDLButton();
         }
     }
 
