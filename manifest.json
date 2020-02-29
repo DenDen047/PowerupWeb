@@ -40,9 +40,9 @@
             "run_at": "document_start"
         },
         {
-            "matches": ["http://youtube/watch*"],
+            "matches": ["https://www.youtube.com/watch*"],
             "js": ["scripts/youtube.js"],
-            "run_at": "document_start"
+            "run_at": "document_end"
         },
         {
             "matches": [
